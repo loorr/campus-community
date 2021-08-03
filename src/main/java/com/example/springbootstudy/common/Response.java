@@ -1,14 +1,18 @@
 package com.example.springbootstudy.common;
 
-import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 
 import java.util.Date;
 
+/**
+ * @author zjianfa
+ */
 @Data
 @ApiModel
+@AllArgsConstructor
 public class Response<T> {
 
     @ApiModelProperty(value = "返回码", example = "200")
@@ -18,22 +22,29 @@ public class Response<T> {
     private String message;
 
     @ApiModelProperty(value = "响应时间戳", example = "2020-08-12 14:37:11")
-    private Date timestamp = new Date();
+    private Date timestamp;
 
     @ApiModelProperty(value = "返回结果")
     private T data;
 
-
-    public static <T> Response<T> getOkResponse(T data){
-        Response<T> response = new Response<>();
-        response.setCode(200);
-        response.setMessage("成功");
-        response.setData(data);
-        return response;
+    public static <T> Response<T> getOk(T data){
+        return new Response(ResponseCode.OPERATION_SUCCESS.getCode(), ResponseCode.OPERATION_SUCCESS.getMsg(), new Date(), data);
     }
 
-    public static <T> Response<T> getFailResponse(){
-        Response<T> response = new Response<>();
-        return response;
+    public static <T> Response<T> getOk(){
+        return getOk(null);
     }
+
+    public static <T> Response<T> getFail(){
+        return getFail(ResponseCode.OPERATION_ERROR.getCode(), ResponseCode.OPERATION_ERROR.getMsg(),null);
+    }
+
+    public static <T> Response<T> getFail(int code, String message, T data){
+        return new Response<>(code, message, new Date(), data);
+    }
+
+    public static <T> Response<T> getFail(int code, String message){
+        return getFail(code, message,null);
+    }
+
 }

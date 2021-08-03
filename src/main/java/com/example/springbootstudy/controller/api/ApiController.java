@@ -23,7 +23,7 @@ public class ApiController implements UserApi {
     @Override
     public Response<List<User>> getUserInfo() {
         List<User> userList = userService.getAllUser(5);
-        return Response.getOkResponse(userList);
+        return Response.getOk(userList);
     }
 
     @Override
@@ -35,7 +35,7 @@ public class ApiController implements UserApi {
     @Override
     public Response<Boolean> setUserInfo(SetUserReq req) {
         System.out.println(req.toString());
-        return Response.getOkResponse(true);
+        return Response.getOk(true);
     }
 
     @Override
