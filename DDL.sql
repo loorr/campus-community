@@ -32,13 +32,10 @@ CREATE TABLE IF NOT EXISTS `campus_im`.`role` (
   PRIMARY KEY(`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT = '角色表';
 
-
-
-
 CREATE TABLE IF NOT EXISTS `campus_im`.`friends` (
     `id` INT(20) UNSIGNED auto_increment COMMENT '主键',
-    `from_uid` BIGINT(20) NOT NULL COMMENT '加用户Id',
     `to_uid` BIGINT(20)   NOT NULL COMMENT '被加用户Id',
+    `from_uid` BIGINT(20) NOT NULL COMMENT '加用户Id',
     `db_create_time` TIMESTAMP DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
     `db_modify_time` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
     unique INDEX `uniq_to_uid_from_chat_uid` (`to_uid`, `from_uid`) USING BTREE,

@@ -3,6 +3,7 @@ package com.example.springbootstudy.controller.api;
 import com.example.springbootstudy.common.Response;
 import com.example.springbootstudy.controller.UserApi;
 import com.example.springbootstudy.controller.req.SetUserReq;
+import com.example.springbootstudy.controller.vo.UserInfoVo;
 import com.example.springbootstudy.model.User;
 import com.example.springbootstudy.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +11,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
+/**
+ * @author zjianfa
+ */
 @RestController
 public class ApiController implements UserApi {
 
@@ -23,8 +27,19 @@ public class ApiController implements UserApi {
     }
 
     @Override
+    public Response<UserInfoVo> getPersonInfo() {
+        // TODO
+        return null;
+    }
+
+    @Override
     public Response<Boolean> setUserInfo(SetUserReq req) {
         System.out.println(req.toString());
         return Response.getOkResponse(true);
+    }
+
+    @Override
+    public Response<Boolean> modifiedUserInfo(SetUserReq req) {
+        return null;
     }
 }

@@ -2,13 +2,9 @@ package com.example.springbootstudy.model;
 
 import lombok.Data;
 
-import java.util.Date;
-
 @Data
-public class User {
-    private Long id;
-    private Date dbCreateTime;
-    private Date dbModifyTime;
+public class User extends BaseModel{
+
     private Long uid;
     private String nickname;
     private String email;
