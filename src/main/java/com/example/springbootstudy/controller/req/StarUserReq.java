@@ -4,6 +4,8 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
+import javax.validation.constraints.NotNull;
+
 /**
  * @author zjianfa
  */
@@ -12,8 +14,10 @@ import lombok.Data;
 public class StarUserReq {
 
     @ApiModelProperty("uid")
+    @NotNull
     private Long uid;
 
     @ApiModelProperty("starUid")
+    @NotNull
     private Long starUid;
 }

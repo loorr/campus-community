@@ -13,7 +13,8 @@ public class FriendController implements FriendApi {
 
     @Override
     public Response<Boolean> starUser(StarUserReq req) {
-        return null;
+        System.out.println(req.toString());
+        return Response.getOk(true);
     }
 
 }

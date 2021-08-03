@@ -21,7 +21,7 @@ public class ApiController implements UserApi {
     private UserService userService;
 
     @Override
-    public Response<List<User>> getUserInfo() {
+    public Response<List<User>> getAllUserList() {
         List<User> userList = userService.getAllUser(5);
         return Response.getOk(userList);
     }

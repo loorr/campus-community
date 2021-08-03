@@ -20,8 +20,8 @@ import java.util.List;
 public interface UserApi {
 
     @ApiOperation("获取全部用户")
-    @GetMapping(value = "/user/get-user-info", produces = MediaType.APPLICATION_JSON_VALUE)
-    Response<List<User>> getUserInfo();
+    @GetMapping(value = "/user/get-all-user-list", produces = MediaType.APPLICATION_JSON_VALUE)
+    Response<List<User>> getAllUserList();
 
     @ApiOperation("获取个人信息")
     @GetMapping(value = "/user/get-person-info", produces = MediaType.APPLICATION_JSON_VALUE)
@@ -34,6 +34,5 @@ public interface UserApi {
     @ApiOperation("用户修改个人信息")
     @PostMapping(value = "/user/modified-user-info", produces = MediaType.APPLICATION_JSON_VALUE)
     Response<Boolean> modifiedUserInfo(@RequestBody SetUserReq req);
-
 
 }
