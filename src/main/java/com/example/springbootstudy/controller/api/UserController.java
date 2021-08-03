@@ -15,7 +15,7 @@ import java.util.List;
  * @author zjianfa
  */
 @RestController
-public class ApiController implements UserApi {
+public class UserController implements UserApi {
 
     @Autowired
     private UserService userService;

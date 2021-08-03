@@ -2,6 +2,11 @@ package com.example.springbootstudy.model;
 
 import lombok.Data;
 
+import java.util.Date;
+
+/**
+ * @author zjianfa
+ */
 @Data
 public class User extends BaseModel{
 
@@ -10,6 +15,6 @@ public class User extends BaseModel{
     private String email;
     private Long phone;
     private String password;
-    private boolean isAdmin;
+    private boolean admin;
 
 }
