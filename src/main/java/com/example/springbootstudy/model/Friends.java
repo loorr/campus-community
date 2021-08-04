@@ -8,4 +8,7 @@ import lombok.Data;
 @Data
 public class Friends extends BaseModel{
 
+    private Long toUid;
+    private Long fromUid;
+
 }
