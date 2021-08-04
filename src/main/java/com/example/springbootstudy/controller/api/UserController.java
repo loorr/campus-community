@@ -21,6 +21,21 @@ public class UserController implements UserApi {
     private UserService userService;
 
     @Override
+    public Response<Void> signIn(User user) {
+        return null;
+    }
+
+    @Override
+    public Response<Void> loginIn(User user) {
+        return null;
+    }
+
+    @Override
+    public Response<Void> loginOut(User user) {
+        return null;
+    }
+
+    @Override
     public Response<List<User>> getAllUserList() {
         List<User> userList = userService.getAllUser(5);
         return Response.getOk(userList);
