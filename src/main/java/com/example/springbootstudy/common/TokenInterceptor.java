@@ -6,6 +6,7 @@ import com.example.springbootstudy.common.annotations.PassToken;
 import com.example.springbootstudy.model.User;
 import com.example.springbootstudy.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.HandlerInterceptor;
@@ -18,6 +19,7 @@ import java.util.Map;
 /**
  * @author zjianfa
  */
+@Component
 public class TokenInterceptor implements HandlerInterceptor {
     private final static String TOKEN_HEADER = "token";
     @Autowired
@@ -54,8 +56,8 @@ public class TokenInterceptor implements HandlerInterceptor {
                 }
                 Map<String, Claim> claimMap = TokenUtil.verifyToken(token);
                 // 获取 token 中的 user id
-                Long userId =  claimMap.get("uid").asLong();
-                User user = userService.findUserByUid(userId);
+                String userId =  claimMap.get("uid").asString();
+                User user = userService.findUserByUid(Long.valueOf(userId));
                 if (user == null || user.getPassword() == null) {
                     throw new RuntimeException("用户不存在，请重新登录");
                 }

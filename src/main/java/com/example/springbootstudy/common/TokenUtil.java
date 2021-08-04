@@ -28,7 +28,7 @@ public class TokenUtil {
     private static final String FIELD_ID = "uid";
     private static final String FIELD_PASSWORD = "password";
     /** 过期时间:秒 */
-    private static final int EXPIRE = 30;
+    private static final int EXPIRE = 60*60*3;
     private static Map<String, Object> map = new HashMap<>();
     static {
         map.put("alg", "HS256");

@@ -15,11 +15,27 @@ import java.util.List;
 @Repository
 public interface UserMapper {
 
-    @Select("select * from user limit #{num}")
+    @Select("select * from user limit #{num} ORDER BY id")
     List<User> getAllUser(@Param("num") int num);
 
-    @Insert("INSERT INTO `user`(uid, nickname, email, phone, password, is_admin) " +
-            "values(#{uid}, #{nickname}, #{email}, #{phone}, #{password}, #{isAdmin})")
+    @Select("<script>"
+                + "SELECT * "
+                + "FROM `user` "
+                + "<where> "
+                    +"<if test='email != null and email !=\"\"'>and email = #{email} </if>"
+                    +"<if test='uid != null'> and uid = #{uid} </if>"
+                + "</where>"
+            + "</script>"
+    )
+    User getUserByEmailOrUid(@Param("email") String email, @Param("uid") Long uid);
+
+
+    @Insert("INSERT INTO `user`(uid, nickname, email, phone, password, admin) " +
+            "values(#{uid}, #{nickname}, #{email}, #{phone}, #{password}, #{admin})")
+    @SelectKey(statement = "SELECT LAST_INSERT_ID()",
+                keyProperty = "uid",
+                resultType = Long.class,
+                before = false)
     int insertOne(User user);
 
     @Update("UPDATE `user` SET nickname=#{nickname}, email=#{email}, phone=#{phone}, " +
