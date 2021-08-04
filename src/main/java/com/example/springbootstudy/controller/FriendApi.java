@@ -28,4 +28,5 @@ public interface FriendApi {
     @ApiOperation("获取用户的所有好友")
     @PostMapping(value = "/friend/get-friend", produces = MediaType.APPLICATION_JSON_VALUE)
     Response<FriendShipVo> getAllFriend(@RequestBody @Validated GetAllFriendReq req);
+
 }

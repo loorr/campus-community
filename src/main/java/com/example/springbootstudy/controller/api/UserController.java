@@ -1,6 +1,7 @@
 package com.example.springbootstudy.controller.api;
 
 import com.example.springbootstudy.common.Response;
+import com.example.springbootstudy.common.ResponseCode;
 import com.example.springbootstudy.controller.UserApi;
 import com.example.springbootstudy.controller.req.SetUserReq;
 import com.example.springbootstudy.controller.vo.UserInfoVo;
@@ -27,7 +28,8 @@ public class UserController implements UserApi {
 
     @Override
     public Response<Void> loginIn(User user) {
-        return null;
+        // 做校验
+        return Response.getFail(ResponseCode.PASSWORD_ERROR.getCode(), ResponseCode.PASSWORD_ERROR.getMsg());
     }
 
     @Override

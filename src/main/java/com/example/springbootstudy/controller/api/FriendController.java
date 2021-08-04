@@ -26,6 +26,6 @@ public class FriendController implements FriendApi {
 
     @Override
     public Response<FriendShipVo> getAllFriend(GetAllFriendReq req) {
-        return null;
+        return Response.getOk(new FriendShipVo());
     }
 }

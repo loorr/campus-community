@@ -30,4 +30,5 @@ public interface EssayApi {
     @ApiOperation("获取公开的动态")
     @PostMapping(value = "/essay/get-all-essay", produces = MediaType.APPLICATION_JSON_VALUE)
     Response<Boolean> getAllEssay(@RequestBody @Validated StarUserReq req);
+
 }
