@@ -28,5 +28,10 @@ public class UserServiceImpl implements UserService {
         return false;
     }
 
+    @Override
+    public User findUserByUid(Long uid) {
+        return null;
+    }
+
 
 }
