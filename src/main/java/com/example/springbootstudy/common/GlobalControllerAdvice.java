@@ -1,6 +1,5 @@
 package com.example.springbootstudy.common;
 
-import com.example.springbootstudy.common.Response;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.BindException;
 import org.springframework.validation.FieldError;
@@ -62,5 +61,10 @@ public class GlobalControllerAdvice {
                 .map(o -> o.getMessage())
                 .collect(Collectors.toList());
         return Response.getFail(HttpStatus.BAD_REQUEST.value(), BAD_REQUEST_MSG, collect);
+    }
+
+    @ExceptionHandler(RuntimeException.class)
+    public Response<List<String>> runtimeExceptionHandler(RuntimeException e) {
+        return Response.getFail(HttpStatus.BAD_REQUEST.value(), e.getMessage());
     }
 }
